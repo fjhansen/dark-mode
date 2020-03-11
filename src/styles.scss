@@ -245,9 +245,37 @@ text-align: left;
 .dark-mode {
   color: #fff;
   background-color: #313843;
+  transition: background-color 0.25s ease-out;
 
   .navbar {
     background-color: #1F2022;
     border: none;
+    transition: background-color 0.25s ease-out;
+  }
+
+  .chart__container {
+    background-color: #1F2022;
+    color: white;
+    transition: background-color 0.25s ease-out;
+  }
+
+  .chartsss {
+    
+  }
+
+
+}
+
+.light-mode {
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.25s ease-out;
+
+  .navbar {
+    transition: background-color 0.25s ease-out;
+
+    .chartsss {
+    display: none;
+    }
   }
 }
