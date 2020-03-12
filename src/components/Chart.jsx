@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import {useDarkMode} from '../hooks/useDarkMode'
 import {
   LineChart,
   Line,
@@ -10,6 +11,14 @@ import {
 } from "recharts";
 
 const Chart = ({ sparklineData }) => {
+
+  const [darkMode, setDarkMode] = useDarkMode(false);
+    
+  const toggleMode = e => {
+        e.preventDefault();
+        setDarkMode(!darkMode);
+      };
+
   const formattedData = sparklineData
     .map((price, idx) => {
       if (idx % 6 === 0) {
@@ -27,13 +36,21 @@ const Chart = ({ sparklineData }) => {
     .filter(data => data);
 
   return (
-    <LineChart width={1100} height={300} data={formattedData}>
+    <div className="chartsss">
+    <LineChart className={darkMode ? "dark-mode" : "light-mode"} width={1100} height={300} data={formattedData}>
+
       <Line type="monotone" dataKey="value" stroke="#8884d8" />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+
+      <CartesianGrid className={darkMode ? "dark-mode" : "light-mode"} stroke={darkMode ? "white" : "purple"} strokeDasharray="5 5" />
+
       <XAxis dataKey="date" interval={3} />
+
       <YAxis />
-      <Tooltip />
+
+      <Tooltip/>
+
     </LineChart>
+    </div>
   );
 };
 
